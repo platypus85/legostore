@@ -74,7 +74,7 @@ public class LegoStoreController {
         BooleanExpression inStockFilter = query.deliveryInfo.inStock.isTrue();
         Predicate smallDeliveryFeeFilter = query.deliveryInfo.deliveryFee.lt(50);
         Predicate hasGreatReviews = query.reviews.any().rating.eq(10);
-        
+
         Predicate bestBuysFilter = inStockFilter.and(smallDeliveryFeeFilter).and(hasGreatReviews);
 
         return (Collection<LegoSet>) this.legoSetRepository.findAll(bestBuysFilter);
